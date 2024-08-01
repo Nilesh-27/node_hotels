@@ -4,6 +4,7 @@ const db = require('./db');
 const Person = require('./models/Person');
 const bodyParser = require('body-parser');
 const MenuItem=require('./models/Menu');
+require('dotenv').config();
 app.use(bodyParser.json());  // req.body 
 app.get('/', function (req, res) {
   res.send('Welcome to our Hotel');
@@ -35,6 +36,8 @@ const menuItemRoutes=require('./routes/menuRoutes');
 // Use the routes
 app.use('/person',personRoutes);
 app.use('/menu',menuItemRoutes);
+
+const PORT = process.env.PORT || 3000;
 
 app.listen(3000,()=>{
     console.log("App is running")
